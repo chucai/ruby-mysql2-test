@@ -1,14 +1,6 @@
-require 'mysql2'
+require_relative 'common'
 
-options = {
-  host: '192.168.99.100',
-  database: 'test_db',
-  port: 3306,
-  username: 'root',
-  password: '123456'
-}
-sql = 'SELECT * FROM users'
-client = Mysql2::Client.new(options)
-results = client.query(sql)
+client = Mysql2::Client.new(OPTIONS)
+results = client.query(SQL)
 
 puts results.count
