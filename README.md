@@ -21,12 +21,21 @@ password: 1qaz2wsx
 ```
 docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
 ```
+带数据卷的启动方式
+```
+docker run --name mysql -v /Users/xudonghe/Documents/projects/github/ruby-mysql2-test/config:/etc/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
+```
 
 连接 MySQL 的信息
 ```
 host: 192.168.99.100
 username: root
 password: 123456
+```
+
+从容器中copy文件到host主机上
+```
+ docker cp mysql:/etc/mysql/my.cnf .
 ```
 
 ## 初始化 MySQL 数据
@@ -68,6 +77,28 @@ COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
 ```
+
+## 操作MySQL的连接数
+
+### 查看MySQL的连接数
+```
+show status where `variable_name` = 'Threads_connected';
+```
+
+### 查看现在正在进行的`Connection Process`
+```
+show processlist;
+```
+
+### 修改 my.conf
+```
+max_connections = 3
+```
+
+具体的操作是
+1. 将 my.conf 文件从 容器中 copy 出来
+2. 然后修改 my.conf
+3. 启动容器，将 my.conf 重新映射到容器中
 
 ## 参考文档
 
