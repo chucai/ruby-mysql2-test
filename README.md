@@ -100,6 +100,10 @@ max_connections = 3
 2. 然后修改 my.conf
 3. 启动容器，将 my.conf 重新映射到容器中
 
+## TODO
+- [ ] MySQL 异步查询
+- [ ] MySQL 连接池技术
+
 ## 参考文档
 
 [mysql2详解](http://starzhou.com/blogs/mysql2)
