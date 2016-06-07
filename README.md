@@ -114,7 +114,7 @@ max_connections = 3
 
 
 ## TODO
-- [ ] MySQL 异步查询
+- [X] MySQL 异步查询
 - [ ] MySQL 连接池技术
 
 ## 参考文档
