@@ -102,7 +102,7 @@ max_connections = 3
 
 ## 异步查询
 
-### 通过标记 async 
+### 通过标记 async
 在查询的时候，设置 async = true 即可实现异步查询。如文件 `syn2.rb` 文件所示。
 但是无法使用callback，需要我们写代码去monit该socket.
 
@@ -115,7 +115,7 @@ max_connections = 3
 
 ## TODO
 - [X] MySQL 异步查询
-- [ ] MySQL 连接池技术
+- [X] MySQL 连接池技术
 
 ## 参考文档
 

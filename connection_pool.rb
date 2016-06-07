@@ -10,10 +10,10 @@
 require 'singleton'
 require_relative 'common'
 
-class Connection
+class ConnectionPool
   include Singleton
 
-  MAX_CONNECTION_NUMBERS = 20 # 一次创建20个连接
+  MAX_CONNECTION_NUMBERS = 3 #20 # 一次创建20个连接
 
   def initialize
     @queue = [] # 队列，用于保存连接
@@ -57,6 +57,7 @@ class Connection
         return @queue.pop
       end
     }
+    # 如果没有获得连接，就继续等待，直到获得连接为止
     sleep 1
     get_connection
   end
