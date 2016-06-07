@@ -100,6 +100,19 @@ max_connections = 3
 2. 然后修改 my.conf
 3. 启动容器，将 my.conf 重新映射到容器中
 
+## 异步查询
+
+### 通过标记 async 
+在查询的时候，设置 async = true 即可实现异步查询。如文件 `syn2.rb` 文件所示。
+但是无法使用callback，需要我们写代码去monit该socket.
+
+而且 Mysql2::Client 封装了 socket, 自己使用 IO.select 监控很麻烦。如果使用 EM 则简单很多。
+见文件 `eventmachine.rb`。
+
+### msyql2/em 扩展
+详情见文件 `eventmachine.rb`
+
+
 ## TODO
 - [ ] MySQL 异步查询
 - [ ] MySQL 连接池技术
